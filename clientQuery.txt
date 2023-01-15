@@ -1,0 +1,70 @@
+query greet {
+  greet
+
+}
+query getAllUSers{
+    users{
+    id,
+    firstName,
+    lastName
+  }
+}
+query getAllQuotes{
+    quotes{
+    name
+  }
+}
+query getAllUSersWithquotes{
+    users{
+    id,
+    firstName,
+    lastName,
+    quotes{
+      name,
+      by
+    }
+  }
+}
+
+query userById{
+  user(id:"231231"){
+    id,
+    firstName,
+    quotes{
+    name
+  }
+  }
+}
+query getquotebyID{
+  quote(by:"231231"){
+    name,
+    by
+  }
+}
+
+
+//get daynamic user
+query userById($userid:ID!){
+  user(id:$userid){
+    id,
+    firstName,
+    quotes{
+    name
+  }
+  }
+}
+// Query variables 
+{
+  "userid" : "231231"
+}
+
+//mutation query create user
+mutation createUser($userNew:UserInput!){
+  signupUserDummy(userNew:$userNew){
+    id,
+    firstName,
+    lastName,
+    email,
+   
+  }
+}
